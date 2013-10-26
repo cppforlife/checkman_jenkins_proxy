@@ -1,16 +1,16 @@
 package storer
 
 import (
-	"io"
+	"errors"
 	"fmt"
+	"io"
 	"log"
 	"net/http"
-	"errors"
 )
 
 type HttpClientStorer struct {
 	endpoint string
-	logger *log.Logger
+	logger   *log.Logger
 }
 
 func NewHttpClientStorer(endpoint string, logger *log.Logger) *HttpClientStorer {

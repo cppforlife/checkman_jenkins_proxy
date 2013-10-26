@@ -1,11 +1,11 @@
 package storer
 
 import (
-	"log"
-	"io"
-	"sync"
-	"io/ioutil"
 	"bytes"
+	"io"
+	"io/ioutil"
+	"log"
+	"sync"
 )
 
 type MemoryStorer struct {
@@ -37,11 +37,11 @@ func (ms *MemoryStorer) Put(key string, content io.Reader) error {
 	return nil
 }
 
-type nopCloser struct { 
-  io.Reader 
+type nopCloser struct {
+	io.Reader
 }
 
-func (nopCloser) Close() error { return nil } 
+func (nopCloser) Close() error { return nil }
 
 func (ms *MemoryStorer) Get(key string) (io.ReadCloser, error) {
 	ms.Lock()

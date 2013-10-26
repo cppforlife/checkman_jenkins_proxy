@@ -4,4 +4,7 @@
 
 chmod +x ./server
 
-exec ./server -listen-address ":${PORT}"
+exec ./server                                                           \
+	-listen-address            ":${PORT}"                                 \
+	-http-discoverer-endpoint  "http://peer-example.cfapps.io/_discover"  \
+	-http-discoverer-every     5s

@@ -46,7 +46,7 @@ func (hcf *HttpClientFetcher) Fetch() (io.ReadCloser, error) {
 
 	if resp.StatusCode != 200 {
 		err = errors.New(resp.Status)
-		hcf.logger.Printf("http-client-fetcher.fetch.fail.non-200 err=%v\n", err)
+		hcf.logger.Printf("http-client-fetcher.fetch.non-200 err=%v\n", err)
 		return nil, err
 	}
 

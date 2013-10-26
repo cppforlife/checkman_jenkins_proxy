@@ -1,31 +1,31 @@
 package storer
 
 import (
-	"log"
 	"io"
-	"time"
+	"log"
 	"sync"
+	"time"
 )
 
 type ExpiringStorer struct {
 	sync.RWMutex
-	storer Storer
+	storer   Storer
 	expireIn time.Duration
-	times map[string]time.Time
-	logger *log.Logger
+	times    map[string]time.Time
+	logger   *log.Logger
 }
 
 func NewExpiringStorer(
-	storer Storer, 
-	expireIn time.Duration, 
+	storer Storer,
+	expireIn time.Duration,
 	logger *log.Logger,
 ) *ExpiringStorer {
 
 	return &ExpiringStorer{
-		storer: storer,
+		storer:   storer,
 		expireIn: expireIn,
-		times: make(map[string]time.Time),
-		logger: logger,
+		times:    make(map[string]time.Time),
+		logger:   logger,
 	}
 }
 
@@ -71,4 +71,3 @@ func (es *ExpiringStorer) Delete(key string) error {
 
 	return es.storer.Delete(key)
 }
-

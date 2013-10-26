@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/cppforlife/checkman_jenkins_proxy/server/storer"
+	"github.com/cppforlife/checkman_jenkins_proxy/storer"
 	"io"
 	"log"
 	"net/http"
@@ -12,14 +12,22 @@ import (
 type Server struct {
 	addr   string
 	storer storer.Storer
+	routes map[string]http.Handler
 	server *http.Server
 	logger *log.Logger
 }
 
-func NewServer(addr string, storer storer.Storer, logger *log.Logger) *Server {
+func NewServer(
+	addr string,
+	storer storer.Storer,
+	routes map[string]http.Handler,
+	logger *log.Logger,
+) *Server {
+
 	return &Server{
 		addr:   addr,
 		storer: storer,
+		routes: routes,
 		logger: logger,
 	}
 }
@@ -38,6 +46,13 @@ func (s *Server) ListenAndServe() error {
 }
 
 func (s *Server) ServeHTTP(respWriter http.ResponseWriter, req *http.Request) {
+	for path, handler := range s.routes {
+		if path == req.URL.Path {
+			handler.ServeHTTP(respWriter, req)
+			return
+		}
+	}
+
 	key := req.URL.Path[1:] // strip '/'
 
 	switch req.Method {

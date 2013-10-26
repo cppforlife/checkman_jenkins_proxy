@@ -14,7 +14,11 @@ type PeriodicFetchScheduler struct {
 	logger *log.Logger
 }
 
-func NewPeriodicFetchScheduler(interval time.Duration, logger *log.Logger) *PeriodicFetchScheduler {
+func NewPeriodicFetchScheduler(
+	interval time.Duration,
+	logger *log.Logger,
+) *PeriodicFetchScheduler {
+
 	return &PeriodicFetchScheduler{
 		time.NewTicker(interval),
 		logger,

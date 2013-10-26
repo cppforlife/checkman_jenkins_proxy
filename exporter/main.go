@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cppforlife/checkman_jenkins_proxy/server/storer"
+	"github.com/cppforlife/checkman_jenkins_proxy/storer"
 	"log"
 	"os"
 )

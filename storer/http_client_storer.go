@@ -64,6 +64,8 @@ func (hs *HttpClientStorer) Get(key string) (io.ReadCloser, error) {
 		hs.logger.Printf("http-client-storer.get.non-200-or-404 url=%s err=%v\n", url, err)
 		return nil, err
 	}
+
+	panic("never") // compiler?
 }
 
 func (hs *HttpClientStorer) Delete(key string) error {

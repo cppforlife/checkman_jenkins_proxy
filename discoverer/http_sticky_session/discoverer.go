@@ -50,6 +50,8 @@ func (hssd *HttpStickySessionDiscoverer) Discover(
 			}
 		}
 	}
+
+	return nil
 }
 
 func (hssd *HttpStickySessionDiscoverer) queryForPeer() *Peer {

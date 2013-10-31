@@ -1,3 +1,0 @@
-```
-while true; do nc -l 8080 < assets/simple.html; done
-```

@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/cppforlife/checkman_jenkins_proxy.png?branch=master)](https://travis-ci.org/cppforlife/checkman_jenkins_proxy)
+
 ## Server
 
 Toy KV store (currently must run as a single instance).
